@@ -1,0 +1,29 @@
+.contanner{
+    padding-left: 30px ;
+    padding-right: 30px ;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: gray;
+    color: aliceblue;
+}
+
+.menuList .Link{
+    padding: 10px;
+}
+.logo{
+    height: 50px;
+    width: auto;
+
+}
+.menuList{
+color: white;
+
+}
+.loginsty{
+    justify-content: center;
+    background-color:chocolate;
+    padding-left: 40%;
+    height: 200px;
+    padding-top: 30px;
+}
