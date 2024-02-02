@@ -1,86 +1,107 @@
+
 import React, { useEffect, useState } from 'react'
-import { addUserData, deleteUser, getAllUserApi } from './ApiCall'
+import { addUserData, deleteUser, getAllUserApi  } from './ApiCall'
+import AddCharger from './addCharger'
 
 function User() {
-  const [name,setName]=useState('')
-  const [email,setEmail]=useState('')
+  const [username,setusername]=useState('')
+  const [companyname,setcompanyname]=useState('')
   const [password,setPassword]=useState('')
-  const [userData,setUserData]=useState([])
+  // const [userData,setUserData]=useState([])
   const [Id,setId]=useState('')
-  useEffect(()=>{
-    getAllUser()
+  // useEffect(()=>{
+  //   getAllUser()
 
-  },[])
+  // },[])
 
 const handleAddUser=async()=>{
-let data=await  addUserData(name,email,password)
-console.log('data')
-getAllUser()
-setName('')
-setEmail('')
+let data=await  addUserData(username,companyname,password)
+console.log('data', data)
+// getAllUser()
+setusername('')
+  setcompanyname('')
 setPassword('')
 
 }
 
-const getAllUser=async()=>{
-  let data=await getAllUserApi()
-  console.log('>>>>>>>>>>>>>',data)
-  setUserData(data.data)
+// const getAllUser=async()=>{
+//   let data=await getAllUserApi()
+//   console.log('>>>>>>>>>>>>>',data)
+//   setUserData(data.data)
 
-}
-const handleEdit=(id)=>{
-  let data=userData.find((item)=>item.id==id)
-  setName(data.Name)
-setEmail(data.email)
-setPassword(data.password)
-setId(data.Id)
+// }
 
-}
-const handleDelete=async(id)=>{
-let data=await  deleteUser(id)
-getAllUser()
 
-}
+
+// const handleEdit=(id)=>{
+//   let data=userData.find((item)=>item.id==id)
+//   setusername(data.username)
+// setcompanyname(data.companyname)
+// setPassword(data.password)
+// setId(data.Id)
+
+// }
+// const handleDelete=async(id)=>{
+// let data=await  deleteUser(id)
+// getAllUser()
+
+//}
   return (
-    <div>
-      <input type="text" placeholder='Enter Name' value={name} onChange={(e)=>setName(e.target.value)}/><br/>
-      <input type="text" placeholder='Enter Email' value={email} onChange={(e)=>setEmail(e.target.value)}/><br/>
-      <input type="text" placeholder='Enter Password' value={password} onChange={(e)=>setPassword(e.target.value)}/><br/>
-      <button onClick={()=>handleAddUser()}>Add User</button>
+    <>
+    <div style={{marginLeft: "20%", marginTop: "20px"}}>
+    <label>Username</label>
+      <input type="text" placeholder='UserName' value={username} onChange={(e)=>setusername(e.target.value)} style={{marginLeft: "50px"}}/><br/><br/>
+      <label>companyName</label>
+      <input type="text" placeholder='Enter CompanyName' value={companyname} onChange={(e)=>setcompanyname(e.target.value)} style={{marginLeft: "20px"}}/><br/><br/>
+      <label>PassWord</label>
+      <input type="text" placeholder='Enter Password' value={password} onChange={(e)=>setPassword(e.target.value)} style={{marginLeft: "60px"}}/><br/>
 
-      <table border="1">
+      <button style={{marginTop:"20px", marginLeft: "120px", height: "30px" , width: "100px", backgroundColor: "black" , color: "white"}} onClick={()=>handleAddUser()}>Save</button>
+
+       <table border="1" style={{marginTop:"20px"}}>
         <thead>
-          <tr>
+           {/*<tr>
             <th>ID</th>
             <th>Name</th>
             <th>Email</th>
             <th>Password</th>
             <th>Role</th>
             <th>Action</th>
-          </tr>
-        </thead>
+          </tr>*/}
+        </thead> 
         <tbody>
-          {userData.map((data) => (
+           {/* {userData.map((data) => (
             <tr key={data?.id}>
               <td>{data?.id}</td>
-              <td>{data?.Name}</td>
-              <td>{data?.email}</td>
+              <td>{data?.username}</td>
+              <td>{data?.companyname}</td>
               <td>{data?.password}</td>
               <td>{data?.role}</td>
-              <td>
-                <button onClick={() => handleEdit(data.id)}>Edit</button>
-                <button onClick={() => handleDelete(data.id)}>Delete</button>
-              </td>
-            </tr>
-          ))}
+              <td>  */}
+
+
+
+
+                {/* <button >Edit</button>
+                <button>Delete</button> */}
+              {/* </td> */}
+            {/* </tr> */}
+          {/* )
+         )
+         } */}
         </tbody>
       </table>
-    
+<div>
+       </div>
+</div>
+
+<div>
+<AddCharger/>
+
+</div>
+    </>
+  
+  )}
 
 
-
-    </div>
-  )
-}
-
-export default User
+export default User;

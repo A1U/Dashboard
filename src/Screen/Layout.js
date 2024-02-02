@@ -28,7 +28,6 @@ function Layout() {
  {role=='Admin'&&
    <Link className='Link' to="/addUser">Add User</Link>}
  
-  c
    {role&&
    <Link className='Link' onClick={()=>handleLogOut()} >log out</Link>}
    </div>
