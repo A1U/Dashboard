@@ -77,6 +77,17 @@ export const addChargerdata=async(serialno, usernames, type, validity)=>{
   return data
 } 
 
+export const getCharger=async(id)=>{
+  const url=`http://localhost:5000/getcharger`
+
+  let response=await fetch(`${url}/${id}`)
+  let data= response.json()
+
+  return data
+  
+
+}
+
 
 // export const getAllUserApi=async()=>{
 //   const url = 'http://localhost:5000/getUser';

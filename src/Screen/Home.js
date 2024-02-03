@@ -4,16 +4,38 @@ import "./Css/home.css"
  import { useNavigate } from 'react-router-dom';
 // import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
  import Charger_detail from "../Screen/charger_detail"
+import { useState } from 'react';
+import { getCharger } from './ApiCall';
 
 
 
  const Home = () => {
   // const [serialno, setSerialno]= useState('');
   // const [selectedItem, setSelectedItem] = useState('');
+  const [charger,setCharger]=useState('')
+  const [messages,setMessages]=useState('')
   const navigator =useNavigate();
-  const chargerdetail=()=>{
+  const chargerdetail=async()=>{
 
-     navigator("/charger_detail")
+    if(charger){
+   
+     let {data}= await getCharger(charger)
+     console.log('datadata',data)
+     if(Array.isArray(data)&&data.length>0){
+
+
+      navigator("/charger_detail",{state:data})
+     }
+     setMessages('Not Match Serial No')
+
+
+
+    }else{
+      setMessages('Enter The Charger Serial no')
+    }
+
+
+   
 
   }
  
@@ -35,8 +57,13 @@ import "./Css/home.css"
 
       <div>
       <h2>Charger Serial no.</h2>
-        <input type="text"  placeholder='Charger serial no.' style={{height: "50px", width: "190px", border: "5px solid black", borderRadius: "10px" }}/>
+        <input type="text"  placeholder='Charger serial no.' value={charger} onChange={(e)=>{
+          setMessages('')
+          setCharger(e.target.value)
+        
+        }} style={{height: "50px", width: "190px", border: "5px solid black", borderRadius: "10px" }}/>
       </div>
+      {messages&&<div style={{color:'red'}}>{messages}</div>}
      <div >
 
 

@@ -2,15 +2,22 @@ import React from 'react'
 import './Css/layout.css'
 import { Link, useNavigate } from 'react-router-dom'
 import logo  from"../Screen/image/ghg.jpeg"
+import { useUserInfo } from '../Context/LoginContext'
+import { checkObject } from '../Util'
 function Layout() {
-  let role=localStorage.getItem('role')
-  let navigator=useNavigate()
-  console.log('role----',role)
+  const {userInfo,setUserInfo}=useUserInfo()
+  const navigate = useNavigate();
+  console.log('role----',userInfo)
 
-  const handleLogOut=()=>{
-    localStorage.clear()
-    navigator('/')
-  }
+  const handleLogOut = () => {
+ 
+    setUserInfo({});
+  
+   
+    
+  
+    navigate('/login');
+  };
   return (
     <div className="contanner">
    <h4><img className='logo' src={logo} alt='...'/></h4>
@@ -25,10 +32,11 @@ function Layout() {
 
    <Link className='Link' to="/Home">Home</Link>
    <Link className='Link' to="/About">About</Link>
- {role=='Admin'&&
+   {/* <Link className='Link' to="/addCharger">Add Charger</Link> */}
+ {userInfo?.role=='Admin'&&
    <Link className='Link' to="/addUser">Add User</Link>}
  
-   {role&&
+   {checkObject(userInfo)&&
    <Link className='Link' onClick={()=>handleLogOut()} >log out</Link>}
    </div>
 

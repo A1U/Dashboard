@@ -82,9 +82,9 @@ let data
           
           <select class="form-select mb-3" aria-label="Default select example"name='type' value={selectoption} onChange={(e)=>setselectoption(e.target.value)}>
   <option selected>Type</option>
-  <option value='Ac Charger'>AC Charger</option>
-  <option value='Type2 Charger'>Type2 Charger</option>
-  <option value='dc Charger'>DC Charger</option>
+  <option value='AcCharger'>AC Charger</option>
+  <option value='Type2Charger'>Type2 Charger</option>
+  <option value='dcCharger'>DC Charger</option>
 </select>
 
 
@@ -93,23 +93,23 @@ let data
 
 <select class="form-select mb-3" aria-label="Default select example" value={selecttime} name='validity' onChange={(e)=>setselecttime(e.target.value)}>
   <option selecte>Validity</option>
-  <option value="1 month">2 month</option>
-  <option value="2 month">2 month</option>
-  <option value="3 month">3 month</option>
-  <option value="4 month">4 month</option>
+  <option value="1">1 month</option>
+  <option value="2">2 month</option>
+  <option value="3">3 month</option>
+  <option value="4">4 month</option>
 
-  <option value="5 month">5 month</option>
-  <option value="6 month">6 month</option>
-  <option value="7 month">7 month</option>
-  <option value="8 month">8 month</option>
-  <option value="9 month">9 month</option>
-  <option value="10 month">10 month</option>
-  <option value="11 month">11 month</option>
-  <option value="1 year">1 year</option>
-  <option value="2 year">2 year</option>
-  <option value="3 year">3 year</option>
-  <option value="4 year">4 year</option>
-  <option value="5 year">5 year</option>
+  <option value="5">5 month</option>
+  <option value="6">6 month</option>
+  <option value="7">7 month</option>
+  <option value="8">8 month</option>
+  <option value="9">9 month</option>
+  <option value="10">10 month</option>
+  <option value="11">11 month</option>
+  <option value="12">1 year</option>
+  <option value="24">2 year</option>
+  <option value="36">3 year</option>
+  <option value="48">4 year</option>
+  <option value="60">5 year</option>
   
 </select>
 </div>
